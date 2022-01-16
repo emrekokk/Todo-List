@@ -21,7 +21,7 @@ class Task {
         self.date = date
         self.status = false
     }
-    static func generateTaskList() -> [Task]
+    static func generateEmptyTaskList() -> [Task]
     {
         let taskList: [Task] = []
         return taskList

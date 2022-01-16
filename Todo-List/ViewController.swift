@@ -7,79 +7,69 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var status: UILabel!
-    @IBOutlet weak var text: UILabel!
-    @IBOutlet weak var statusButton: UIButton!
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var todoTable: UITableView!
     
-    let successColor =  CGColor.init(red: 187/255, green: 245/255, blue: 17/255, alpha: 96.0/100)
-    let waitingColor =  CGColor.init(red: 245/255, green: 153/255, blue: 42/255, alpha: 96.0/100)
-    var taskU = Task(text:"  do something", date:Date(timeIntervalSinceReferenceDate:410220000),status:false)
-    var user = User(tasks: Task.generateTaskList(), fname: "Emre", lName:"Kok")
+    var taskA = Task(text:"do something", date:Date(timeIntervalSinceReferenceDate:41022000),status:false)
+    var taskB = Task(text:"do nothing", date:Date(timeIntervalSinceReferenceDate:41022020),status:false)
+    var user = User(tasks: Task.generateEmptyTaskList(), fname: "Emre", lName:"Kok")
+    
+    let ColorPicker:ColorPalette = ColorPalette()
+        
     override func viewDidLoad() {
+        user.assignTaskToUser(task: taskA)
+        user.assignTaskToUser(task: taskB)
+        
         super.viewDidLoad()
-        text.layer.masksToBounds = true
-        text.layer.cornerRadius = 10
-        text.layer.backgroundColor = successColor
-        text.textColor = UIColor.white
-        text.textColor = UIColor.black
-        user.assignTaskToUser(task: taskU)
-        statusButton.layer.cornerRadius = 6
-        clickableUILabel()
-        loadData()
+        todoTable.delegate = self
+        todoTable.dataSource = self
+
         // Do any additional setup after loading the view.
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.user.taskList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = TaskTableCell()
+        
+        cell.taskLabel.text = self.user.taskList[indexPath.row].text
+        
+        if self.user.taskList[indexPath.row].status! {
+            cell.backgroundColor =  ColorPicker.successColorUI
+        }
+        else{
+            cell.backgroundColor =  ColorPicker.waitingColorUI
+        }
+        
+        return cell
+        }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-    @IBAction func button(_ sender: Any) {
-        if user.taskList[0].status == false
+        if !user.taskList[indexPath.row].status!
         {
-            user.taskList[0].status = true
+            user.taskList[indexPath.row].status = true
         }
         else
         {
-            user.taskList[0].status = false   
+            user.taskList[indexPath.row].status = false
         }
-        loadData()
-    }
-    func loadData(){
-        let userTasks = self.user.taskList
-
-        if userTasks[0].status == true{
-            //status.text = "Tamamlandı"
-            text.backgroundColor = UIColor.init(cgColor: successColor)
-            statusButton.titleLabel?.textColor = .black
-        }
-        else {
-            //status.text = "Devam Ediyor"
-            text.backgroundColor = UIColor.init(cgColor: waitingColor)
-            statusButton.titleLabel?.textColor = .white
-            statusButton.backgroundColor = UIColor.red
-            
-        }
-        text.text = userTasks[0].text
+        tableView.reloadData()
     }
     
-    func clickableUILabel(){
-        text.isUserInteractionEnabled = true
-        // Create and add the Gesture Recognizer
-        let guestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(labelClicked(_:)))
-        text.addGestureRecognizer(guestureRecognizer)
-        view.addSubview(text)
-    }
-    
-    @objc func labelClicked(_ sender: Any) {
-        if user.taskList[0].status == false
-        {
-            user.taskList[0].status = true
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "id3" {
+            // as -- casting 
+            let destinationVC = segue.destination as! NewTaskVController
+            destinationVC.textScreen = "Type your task."
         }
-        else
-        {
-            user.taskList[0].status = false   
-        }
-        loadData()
     }
-    
+    @IBAction func openTask(_ sender: Any) {
+        performSegue(withIdentifier: "id3", sender: nil)
+    }
 }
 

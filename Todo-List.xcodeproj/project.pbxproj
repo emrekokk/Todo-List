@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD2C9630276533CA00EF49FD /* TaskTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C962F276533CA00EF49FD /* TaskTableCell.swift */; };
+		FD66974E278A2477003F098D /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD66974D278A2477003F098D /* ColorPalette.swift */; };
+		FD669750278A2F5C003F098D /* NewTaskVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD66974F278A2F5B003F098D /* NewTaskVController.swift */; };
 		FDA23797275AD56700E04A34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA23796275AD56700E04A34 /* AppDelegate.swift */; };
 		FDA23799275AD56700E04A34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA23798275AD56700E04A34 /* SceneDelegate.swift */; };
 		FDA2379B275AD56700E04A34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2379A275AD56700E04A34 /* ViewController.swift */; };
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FD2C962F276533CA00EF49FD /* TaskTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableCell.swift; sourceTree = "<group>"; };
+		FD66974D278A2477003F098D /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		FD66974F278A2F5B003F098D /* NewTaskVController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskVController.swift; sourceTree = "<group>"; };
 		FDA23793275AD56700E04A34 /* Todo-List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Todo-List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDA23796275AD56700E04A34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDA23798275AD56700E04A34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +121,9 @@
 				FDA2379F275AD56700E04A34 /* Todo_List.xcdatamodeld */,
 				FDA237C9275C1CE200E04A34 /* Task.swift */,
 				FDA237CB275C1FFF00E04A34 /* User.swift */,
+				FD2C962F276533CA00EF49FD /* TaskTableCell.swift */,
+				FD66974D278A2477003F098D /* ColorPalette.swift */,
+				FD66974F278A2F5B003F098D /* NewTaskVController.swift */,
 			);
 			path = "Todo-List";
 			sourceTree = "<group>";
@@ -270,8 +279,11 @@
 				FDA2379B275AD56700E04A34 /* ViewController.swift in Sources */,
 				FDA23797275AD56700E04A34 /* AppDelegate.swift in Sources */,
 				FDA237CC275C1FFF00E04A34 /* User.swift in Sources */,
+				FD66974E278A2477003F098D /* ColorPalette.swift in Sources */,
+				FD2C9630276533CA00EF49FD /* TaskTableCell.swift in Sources */,
 				FDA237CA275C1CE200E04A34 /* Task.swift in Sources */,
 				FDA23799275AD56700E04A34 /* SceneDelegate.swift in Sources */,
+				FD669750278A2F5C003F098D /* NewTaskVController.swift in Sources */,
 				FDA237A1275AD56700E04A34 /* Todo_List.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
